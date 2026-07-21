@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 20% 98%;
+    --foreground: 240 2% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 2% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 2% 10%;
+    --primary: 32 93% 65%;
+    --primary-foreground: 240 2% 10%;
+    --secondary: 40 15% 95%;
+    --secondary-foreground: 240 2% 10%;
+    --muted: 40 10% 94%;
+    --muted-foreground: 240 3% 40%;
+    --accent: 330 78% 61%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 40 10% 90%;
+    --input: 40 10% 90%;
+    --ring: 32 93% 65%;
+    --radius: 1rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-palace-cream text-palace-charcoal font-body antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .section-padding {
+    @apply px-4 py-20 sm:px-6 lg:px-8 lg:py-28;
+  }
+
+  .container-custom {
+    @apply mx-auto max-w-7xl;
+  }
+
+  .heading-display {
+    @apply font-heading text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl;
+  }
+
+  .heading-section {
+    @apply font-heading text-3xl font-semibold tracking-wide sm:text-4xl lg:text-5xl;
+  }
+
+  .heading-premium {
+    letter-spacing: 0.15em;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-palace-orange via-palace-pink to-palace-blue bg-clip-text text-transparent;
+  }
+}

@@ -67,7 +67,7 @@ export function Footer() {
                 <li className="flex items-start gap-3">
                   <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-palace-orange" />
                   <span>
-                    Kid's Palace Preschool, After Tivim Industrial Estate,
+                    Kid&apos;s Palace Preschool, After Tivim Industrial Estate,
                     <br />
                     Near forest check post Damadem Karaswada, North Goa,403526
                   </span>

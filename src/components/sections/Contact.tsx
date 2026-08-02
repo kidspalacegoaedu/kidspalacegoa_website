@@ -10,8 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  PHONE_NUMBER,
-  PHONE_HREF,
+  PHONE_NUMBERS,
   WHATSAPP_NUMBER,
   WHATSAPP_MESSAGE,
 } from "@/lib/constants";
@@ -48,24 +47,32 @@ export function Contact() {
                         icon: MapPin,
                         title: "Visit Us",
                         content:
-                          "Kids Palace Preschool & Daycare, Porvorim, North Goa, India — 403521",
+                          "Kid's Palace Preschool, After Tivim Industrial Estate, Near forest check post Damadem Karaswada, North Goa,403526",
                       },
                       {
                         icon: Phone,
                         title: "Call Us",
-                        content: PHONE_NUMBER,
-                        href: PHONE_HREF,
+                        content: null,
+                        phoneLinks: PHONE_NUMBERS,
                       },
                       {
                         icon: Mail,
                         title: "Email Us",
-                        content: "info@kidspalacegoa.com",
-                        href: "mailto:info@kidspalacegoa.com",
+                        content: "kidspalacegoa@gmail.com",
+                        href: "mailto:kidspalacegoa@gmail.com",
                       },
                       {
                         icon: Clock,
-                        title: "Office Hours",
-                        content: "Mon – Sat: 8:30 AM – 6:30 PM",
+                        title: "Working Hours",
+                        content: [
+                          "School: 9:00 AM – 12:30 PM",
+                          "",
+                          "Daycare: 9:00 AM – 6:00 PM",
+                          "",
+                          "Working Days: Monday to Friday",
+                          "",
+                          "Saturday: School Closed • Daycare Open",
+                        ],
                       },
                     ].map((item) => (
                       <div key={item.title} className="flex items-start gap-4">
@@ -83,6 +90,24 @@ export function Contact() {
                             >
                               {item.content}
                             </a>
+                          ) : item.phoneLinks ? (
+                            <div className="flex flex-col gap-1">
+                              {item.phoneLinks.map((phone) => (
+                                <a
+                                  key={phone.href}
+                                  href={phone.href}
+                                  className="text-sm text-muted-foreground transition-colors hover:text-palace-orange"
+                                >
+                                  {phone.display}
+                                </a>
+                              ))}
+                            </div>
+                          ) : Array.isArray(item.content) ? (
+                            <div className="mt-1 flex flex-col gap-1 text-sm text-muted-foreground">
+                              {item.content.map((line) => (
+                                <p key={line}>{line}</p>
+                              ))}
+                            </div>
                           ) : (
                             <p className="text-sm text-muted-foreground">{item.content}</p>
                           )}

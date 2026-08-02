@@ -8,9 +8,13 @@ export const NAV_LINKS = [
   { href: "#contact", label: "Contact" },
 ] as const;
 
-export const PHONE_NUMBER = "+91 98765 43210";
-export const PHONE_HREF = "tel:+919876543210";
-export const WHATSAPP_NUMBER = "919876543210";
+export const PHONE_NUMBERS = [
+  { display: "+91 99231 19071", href: "tel:+919923119071" },
+  { display: "+91 85540 60072", href: "tel:+918554060072" },
+] as const;
+export const PHONE_NUMBER = "+91 99231 19071 / +91 85540 60072";
+export const PHONE_HREF = PHONE_NUMBERS[0].href;
+export const WHATSAPP_NUMBER = "919923119071";
 export const WHATSAPP_MESSAGE =
   "Hello Kids Palace! I would like to know more about admissions.";
 
@@ -220,31 +224,31 @@ export const GALLERY_IMAGES = [
 
 export const TESTIMONIALS = [
   {
-    name: "Priya & Rohan Desai",
-    role: "Parents of Aanya, Nursery",
+    name: "Gabriel Pereira",
+    role: "Parent",
     content:
-      "Kids Palace has been a blessing for our family. Aanya wakes up excited every morning. The teachers are incredibly warm and the environment feels truly safe.",
+      "Great place for daycare, one be stressed free after living their children there.",
     rating: 5,
   },
   {
-    name: "Michael & Sarah Fernandes",
-    role: "Parents of Noah, Jr. KG",
+    name: "Imtiaz Sheikh",
+    role: "Parent of Aayat",
     content:
-      "We moved to Goa and were nervous about finding the right preschool. Kids Palace exceeded every expectation — professional, caring, and beautifully run.",
+      "Its very difficult to express my feelings here cos it's was a second home for my daughter Aayat. We had started with kids place when my daughter was of just 19 months old . Madam Sangeeta n Team of Kids palace have taken care of her till date today she 6 years old. Ma'am n the entire teams is just incredible. the care the love the education, the manners, the creativity ideas n lots more guidance are been given here.Yes it's 200% correct that Kids palace is best place for our little ones; a way away from ur homes.Thank you Sangeeta Ma'am...",
     rating: 5,
   },
   {
-    name: "Anita Kamat",
-    role: "Parent of Vihaan, Playgroup",
+    name: "Pallavi Naik",
+    role: "Parent of saket",
     content:
-      "The play-based approach is exactly what we wanted. Vihaan has blossomed socially and emotionally. We couldn't recommend Kids Palace more highly.",
+      "KIDS PALACE,a home away from your little ones homes! Yes it is true As a parents I have experienced it I took admission for my son Saket for KG2 + daycare It was my decision to put him in good school and daycare and now I feel proud to say that I have selected the best school for my son.Really the entire team of kids palace is very good caring and loving and friendly, It’s a place where they encourage children to groom to participate to be confident. I am very much happy with school’s teaching technology, activities. It’s so different and practical. Also in daycare he learnt to eat systematically, all discipline do his own things independently. Teacher and daycare staff is so humble,I will say its not just a school it’s a blessings for working women who can able to work without any worry of their child and I will highly recommend all the parents to enroll their kids to KIDS PALACE.Thanque very much sangeeta madam and all team and staff of kids palace",
     rating: 5,
   },
   {
-    name: "David & Meera Pinto",
-    role: "Parents of Maya, Daycare",
+    name: "Meghana Gaonkar",
+    role: "Parent",
     content:
-      "As working parents, the daycare program gives us complete peace of mind. Maya is happy, well-fed, and learning every single day.",
+      "Amazing place for your little ones, my own experience says it. The Principal of this school Mrs. Sangeeta and all her staff take personal care of each and every child attached to their school. The teaching strategies are so amazing that each child just enjoys to be in the school. This school not only makes their students feel confirmable with each other and creates a bond amongst them but even the parents of each child is given opportunities to interact with the other parents by engaging them in various activities... such friendly atmosphere school. I strongly recommend parents to select this wonderful Kid's Palace school for your child.. thanks Kids Palace school for taking care of my son🙏🙏🙏",
     rating: 5,
   },
 ] as const;
@@ -259,11 +263,6 @@ export const FAQ_ITEMS = [
     question: "What are your operating hours?",
     answer:
       "Our preschool operates from 8:30 AM to 3:30 PM, Monday through Saturday. Daycare extends until 6:30 PM for working parents.",
-  },
-  {
-    question: "Is meals and snacks provided?",
-    answer:
-      "Yes, we provide nutritious, hygienically prepared meals and snacks. We accommodate dietary restrictions and allergies with prior notice.",
   },
   {
     question: "How do you ensure child safety?",
@@ -287,14 +286,14 @@ export const ADMISSION_STEPS = [
     step: 1,
     title: "Visit School",
     description:
-      "Tour our beautiful campus, observe classrooms in action, and experience the Kids Palace environment firsthand.",
+      "Experience Kids Palace in person. A school is best felt, not just heard about. We warmly invite families to visit our campus so your child can explore the environment, become familiar with the classrooms, and feel safe and excited before their very first day.",
     icon: "MapPin",
   },
   {
     step: 2,
     title: "Meet the Principal",
     description:
-      "Discuss your child's needs, ask questions, and learn about our philosophy, programs, and values.",
+      "During your visit, parents can tour the campus, meet our teachers, explore the learning environment, and have all their questions answered. It also gives us an opportunity to understand your child better and build a strong foundation of trust from the very beginning.",
     icon: "MessageCircle",
   },
   {

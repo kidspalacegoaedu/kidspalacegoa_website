@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Phone, Mail, Facebook, Instagram, Youtube } from "lucide-react";
-import { NAV_LINKS, PHONE_NUMBER, PHONE_HREF } from "@/lib/constants";
+import { NAV_LINKS, PHONE_NUMBERS } from "@/lib/constants";
 
 const socialIcons = [
   { icon: Facebook, href: "#", label: "Facebook" },
@@ -67,21 +67,25 @@ export function Footer() {
                 <li className="flex items-start gap-3">
                   <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-palace-orange" />
                   <span>
-                    Kids Palace Preschool & Daycare
+                    Kid's Palace Preschool, After Tivim Industrial Estate,
                     <br />
-                    Porvorim, North Goa, India — 403521
+                    Near forest check post Damadem Karaswada, North Goa,403526
                   </span>
                 </li>
-                <li className="flex items-center gap-3">
-                  <Phone className="h-4 w-4 shrink-0 text-palace-orange" />
-                  <a href={PHONE_HREF} className="hover:text-white">
-                    {PHONE_NUMBER}
-                  </a>
+                <li className="flex items-start gap-3">
+                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-palace-orange" />
+                  <div className="flex flex-col gap-1">
+                    {PHONE_NUMBERS.map((phone) => (
+                      <a key={phone.href} href={phone.href} className="hover:text-white">
+                        {phone.display}
+                      </a>
+                    ))}
+                  </div>
                 </li>
                 <li className="flex items-center gap-3">
                   <Mail className="h-4 w-4 shrink-0 text-palace-orange" />
-                  <a href="mailto:info@kidspalacegoa.com" className="hover:text-white">
-                    info@kidspalacegoa.com
+                  <a href="mailto:kidspalacegoa@gmail.com" className="hover:text-white">
+                    kidspalacegoa@gmail.com
                   </a>
                 </li>
               </ul>
@@ -92,9 +96,10 @@ export function Footer() {
                 Hours
               </h3>
               <ul className="space-y-2 text-sm text-white/70">
-                <li>Mon – Sat: 8:30 AM – 3:30 PM</li>
-                <li>Daycare: Until 6:30 PM</li>
-                <li>Sunday: Closed</li>
+                <li>School: 9:00 AM – 12:30 PM</li>
+                <li>Daycare: Up to 6:00 PM</li>
+                <li>Working Days: Monday to Friday</li>
+                <li>Saturday: Only Daycare</li>
               </ul>
               <div className="mt-6 flex gap-2">
                 <span className="h-3 w-3 rounded-md bg-palace-orange" />

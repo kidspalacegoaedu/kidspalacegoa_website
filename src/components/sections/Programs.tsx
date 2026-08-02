@@ -34,7 +34,7 @@ export function Programs() {
           <SectionHeader
             badge="Programs"
             title="Programs Offered"
-            subtitle="Age-appropriate curricula designed to nurture development at every stage."
+            subtitle="Age-appropriate curriculum designed to nurture development at every stage."
           />
         </ScrollReveal>
 

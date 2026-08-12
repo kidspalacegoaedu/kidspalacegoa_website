@@ -20,8 +20,9 @@ export function Footer() {
                 src="/logo.png"
                 alt="Kids Palace"
                 width={160}
-                height={80}
-                className="h-16 w-auto brightness-0 invert"
+                height={107}
+                sizes="(max-width: 640px) 140px, 160px"
+                className="h-auto w-full max-w-[160px]"
               />
               <p className="text-sm leading-relaxed text-white/70">
                 Nurturing young minds in Goa since 2009. A premium preschool where

@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
+import * as Dialog from "@radix-ui/react-dialog";
 import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
 import { SectionHeader } from "@/components/shared/SectionHeader";
@@ -12,6 +13,7 @@ import { TESTIMONIALS } from "@/lib/constants";
 export function Testimonials() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "center" });
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedReview, setSelectedReview] = useState<(typeof TESTIMONIALS)[number] | null>(null);
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
@@ -52,13 +54,24 @@ export function Testimonials() {
                     key={testimonial.name}
                     className="min-w-0 flex-[0_0_100%] px-4"
                   >
-                    <Card className="border-0 bg-white shadow-soft-lg">
-                      <CardContent className="p-8 sm:p-12">
+                    <Card className="h-[340px] border-0 bg-white shadow-soft-lg sm:h-[360px]">
+                      <CardContent className="flex h-full flex-col p-8 sm:p-12">
                         <Quote className="mb-6 h-10 w-10 text-palace-orange/30" />
-                        <p className="mb-8 text-lg leading-relaxed text-palace-charcoal sm:text-xl">
-                          &ldquo;{testimonial.content}&rdquo;
-                        </p>
-                        <div className="flex items-center justify-between">
+                        <div className="min-h-0 flex-1">
+                          <p className="text-lg leading-relaxed text-palace-charcoal sm:text-xl">
+                            &ldquo;{getReviewExcerpt(testimonial.content)}&rdquo;
+                          </p>
+                          {isLongReview(testimonial.content) && (
+                            <button
+                              type="button"
+                              onClick={() => setSelectedReview(testimonial)}
+                              className="mt-3 font-heading text-sm font-semibold text-palace-orange transition-colors duration-300 hover:text-palace-pink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-palace-orange focus-visible:ring-offset-2"
+                            >
+                              Read full review
+                            </button>
+                          )}
+                        </div>
+                        <div className="mt-6 flex items-center justify-between">
                           <div>
                             <p className="font-heading font-semibold text-palace-charcoal">
                               {testimonial.name}
@@ -121,6 +134,49 @@ export function Testimonials() {
           </div>
         </ScrollReveal>
       </div>
+
+      <Dialog.Root
+        open={selectedReview !== null}
+        onOpenChange={(open) => !open && setSelectedReview(null)}
+      >
+        <Dialog.Portal>
+          <Dialog.Overlay className="fixed inset-0 z-[60] bg-palace-charcoal/55 backdrop-blur-sm data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0" />
+          <Dialog.Content className="fixed left-1/2 top-1/2 z-[70] max-h-[80vh] w-[calc(100%-2rem)] max-w-2xl -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-3xl bg-white p-6 shadow-soft-lg outline-none sm:p-10 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=open]:duration-300">
+            <Dialog.Title className="font-heading text-2xl font-semibold text-palace-charcoal">
+              Parent Review
+            </Dialog.Title>
+            <Dialog.Description className="mt-1 text-sm text-muted-foreground">
+              Shared by {selectedReview?.name}
+            </Dialog.Description>
+            <p className="mt-6 whitespace-pre-line text-base leading-relaxed text-palace-charcoal sm:text-lg">
+              &ldquo;{selectedReview?.content}&rdquo;
+            </p>
+            <div className="mt-8 flex items-center justify-between border-t border-border pt-5">
+              <div>
+                <p className="font-heading font-semibold text-palace-charcoal">
+                  {selectedReview?.name}
+                </p>
+                <p className="text-sm text-muted-foreground">{selectedReview?.role}</p>
+              </div>
+              <Dialog.Close asChild>
+                <Button variant="outline" size="sm">Close</Button>
+              </Dialog.Close>
+            </div>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
     </section>
   );
+}
+
+const REVIEW_EXCERPT_LENGTH = 230;
+
+function isLongReview(content: string) {
+  return content.length > REVIEW_EXCERPT_LENGTH;
+}
+
+function getReviewExcerpt(content: string) {
+  return isLongReview(content)
+    ? `${content.slice(0, REVIEW_EXCERPT_LENGTH).trimEnd()}…`
+    : content;
 }

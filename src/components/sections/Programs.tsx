@@ -59,7 +59,7 @@ export function Programs() {
                     <h3 className="mb-2 font-heading text-lg font-semibold text-palace-charcoal">
                       {program.title}
                     </h3>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-base leading-relaxed text-muted-foreground">
                       {program.description}
                     </p>
                   </CardContent>

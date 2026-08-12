@@ -9,11 +9,13 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { FAQ_ITEMS } from "@/lib/constants";
+import { AmbientShapes } from "@/components/shared/AmbientShapes";
 
 export function FAQ() {
   return (
-    <section className="section-padding bg-white">
-      <div className="container-custom">
+    <section className="section-padding relative overflow-hidden bg-white">
+      <AmbientShapes variant="orange" />
+      <div className="container-custom relative z-10">
         <ScrollReveal>
           <SectionHeader
             badge="FAQ"

@@ -36,7 +36,12 @@ export function Navbar() {
             : "bg-transparent"
         )}
       >
-        <nav className="container-custom flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
+        <nav
+          className={cn(
+            "container-custom flex h-20 origin-center items-center justify-between px-4 transition-transform duration-500 ease-out sm:px-6 lg:px-8",
+            scrolled && "scale-[0.96]"
+          )}
+        >
           <Link href="#home" className="relative z-50 shrink-0">
             <Image
               src="/logo.png"
@@ -48,14 +53,23 @@ export function Navbar() {
             />
           </Link>
 
-          <div className="hidden items-center gap-1 lg:flex">
+          <div
+            className={cn(
+              "hidden items-center gap-1 rounded-2xl p-1 transition-[background-color,box-shadow,border-color] duration-500 lg:flex",
+              scrolled
+                ? "border border-transparent"
+                : "border border-white/15 bg-palace-charcoal/55 shadow-soft backdrop-blur-md"
+            )}
+          >
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "rounded-xl px-3 py-2 text-sm font-medium transition-colors hover:text-palace-orange",
-                  scrolled ? "text-palace-charcoal" : "text-white/90 hover:text-white"
+                  "rounded-xl px-3 py-2 text-sm font-semibold transition-[transform,background-color,color,box-shadow] duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-palace-orange focus-visible:ring-offset-2",
+                  scrolled
+                    ? "text-palace-charcoal hover:-translate-y-px hover:bg-palace-warm hover:text-palace-orange"
+                    : "text-white hover:-translate-y-px hover:bg-white/15 hover:text-white hover:shadow-soft"
                 )}
               >
                 {link.label}
@@ -80,10 +94,10 @@ export function Navbar() {
           <button
             type="button"
             className={cn(
-              "relative z-50 flex h-11 w-11 items-center justify-center rounded-xl lg:hidden",
+              "relative z-50 flex h-11 w-11 items-center justify-center rounded-xl transition-[transform,background-color,color] duration-300 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-palace-orange focus-visible:ring-offset-2 lg:hidden",
               scrolled || mobileOpen
-                ? "text-palace-charcoal"
-                : "text-white"
+                ? "text-palace-charcoal hover:bg-palace-warm"
+                : "bg-palace-charcoal/45 text-white shadow-soft backdrop-blur-md hover:bg-palace-charcoal/65"
             )}
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}

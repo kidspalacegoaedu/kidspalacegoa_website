@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { MapPin, Phone, Mail, Clock, Send, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, MessageCircle, ExternalLink } from "lucide-react";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Button } from "@/components/ui/button";
@@ -17,13 +17,41 @@ import {
 
 export function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(formData)),
+      });
+      const data = await response.json();
+
+      if (!response.ok) throw new Error(data.error);
+
+      form.reset();
+      setSubmitted(true);
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error ? error.message : "We couldn't send your message. Please try again."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+  const mapsHref =
+    "https://www.google.com/maps/search/?api=1&query=Kids+Palace+Preschool%2C+Near+Tivim+Industrial+Estate%2C+Damadem%2C+Karaswad+Road%2C+Mumbai+Goa+Highway%2C+Acoi+Village%2C+Goa+403526";
 
   return (
     <section id="contact" className="section-padding bg-palace-warm">
@@ -47,7 +75,8 @@ export function Contact() {
                         icon: MapPin,
                         title: "Visit Us",
                         content:
-                          "Kid's Palace Preschool, After Tivim Industrial Estate, Near forest check post Damadem Karaswada, North Goa,403526",
+                          "Kids Palace Preschool, Near Tivim Industrial Estate, Damadem, Karaswad Road, Mumbai Goa Highway, Acoi Village, Goa 403526",
+                        mapsHref,
                       },
                       {
                         icon: Phone,
@@ -75,15 +104,39 @@ export function Contact() {
                         ],
                       },
                     ].map((item) => (
-                      <div key={item.title} className="flex items-start gap-4">
-                        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-palace-orange/10">
-                          <item.icon className="h-5 w-5 text-palace-orange" />
-                        </div>
+                      <div key={item.title} className="group flex items-start gap-4">
+                        {item.mapsHref ? (
+                          <a
+                            href={item.mapsHref}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Open Kids Palace location in Google Maps"
+                            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-palace-orange/10 transition-[transform,background-color] duration-300 hover:scale-105 hover:bg-palace-orange/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-palace-orange focus-visible:ring-offset-2"
+                          >
+                            <item.icon className="h-5 w-5 text-palace-orange" />
+                          </a>
+                        ) : (
+                          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-palace-orange/10 transition-transform duration-300 group-hover:scale-105">
+                            <item.icon className="h-5 w-5 text-palace-orange" />
+                          </div>
+                        )}
                         <div>
                           <p className="font-heading text-sm font-semibold text-palace-charcoal">
                             {item.title}
                           </p>
-                          {item.href ? (
+                          {item.mapsHref ? (
+                            <a
+                              href={item.mapsHref}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="group/address inline-flex flex-col text-sm text-muted-foreground transition-colors duration-300 hover:text-palace-orange focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-palace-orange focus-visible:ring-offset-2"
+                            >
+                              <span>{item.content}</span>
+                              <span className="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-palace-orange opacity-0 transition-[opacity,transform] duration-300 group-hover/address:translate-x-0.5 group-hover/address:opacity-100">
+                                Get directions <ExternalLink className="h-3 w-3" />
+                              </span>
+                            </a>
+                          ) : item.href ? (
                             <a
                               href={item.href}
                               className="text-sm text-muted-foreground transition-colors hover:text-palace-orange"
@@ -128,7 +181,7 @@ export function Contact() {
               <div className="overflow-hidden rounded-2xl shadow-soft">
                 <iframe
                   title="Kids Palace Location"
-                  src="https://maps.google.com/maps?q=Porvorim,Goa,India&output=embed"
+                  src="https://maps.google.com/maps?q=Kids+Palace+Preschool%2C+Near+Tivim+Industrial+Estate%2C+Damadem%2C+Karaswad+Road%2C+Mumbai+Goa+Highway%2C+Acoi+Village%2C+Goa+403526&output=embed"
                   className="h-64 w-full border-0 grayscale transition-all duration-500 hover:grayscale-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
@@ -197,9 +250,14 @@ export function Contact() {
                         required
                       />
                     </div>
-                    <Button type="submit" className="w-full gap-2" size="lg">
+                    {submitError && (
+                      <p className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700" role="alert">
+                        {submitError}
+                      </p>
+                    )}
+                    <Button type="submit" className="w-full gap-2" size="lg" disabled={isSubmitting}>
                       <Send className="h-4 w-4" />
-                      Send Message
+                      {isSubmitting ? "Sending…" : "Send Message"}
                     </Button>
                   </form>
                 )}

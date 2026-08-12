@@ -25,7 +25,7 @@ export function VisionMission() {
                 <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-palace-orange/10 transition-transform duration-500 group-hover:rotate-3 group-hover:scale-110">
                   <Eye className="h-7 w-7 text-palace-orange" />
                 </div>
-                <h3 className="mb-4 font-heading text-2xl font-semibold tracking-wide text-palace-charcoal">
+                <h3 className="mb-4 font-heading text-2xl font-semibold tracking-tight text-palace-charcoal">
                   Our Vision
                 </h3>
                 <p className="leading-relaxed text-muted-foreground">
@@ -45,7 +45,7 @@ export function VisionMission() {
                 <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-palace-pink/10 transition-transform duration-500 group-hover:-rotate-3 group-hover:scale-110">
                   <Target className="h-7 w-7 text-palace-pink" />
                 </div>
-                <h3 className="mb-4 font-heading text-2xl font-semibold tracking-wide text-palace-charcoal">
+                <h3 className="mb-4 font-heading text-2xl font-semibold tracking-tight text-palace-charcoal">
                   Our Mission
                 </h3>
                 <p className="leading-relaxed text-muted-foreground">

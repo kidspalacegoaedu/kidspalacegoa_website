@@ -4,6 +4,7 @@ import { MapPin, MessageCircle, CheckCircle2, type LucideIcon } from "lucide-rea
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { ADMISSION_STEPS } from "@/lib/constants";
+import { AmbientShapes } from "@/components/shared/AmbientShapes";
 
 const iconMap: Record<string, LucideIcon> = {
   MapPin,
@@ -15,8 +16,9 @@ const stepColors = ["bg-gradient-orange", "bg-gradient-pink", "bg-gradient-green
 
 export function AdmissionProcess() {
   return (
-    <section id="admissions" className="section-padding bg-white">
-      <div className="container-custom">
+    <section id="admissions" className="section-padding relative overflow-hidden bg-white">
+      <AmbientShapes variant="blue" />
+      <div className="container-custom relative z-10">
         <ScrollReveal>
           <SectionHeader
             badge="Admissions"
@@ -65,7 +67,7 @@ export function AdmissionProcess() {
                         <h3 className="mb-3 font-heading text-xl font-semibold text-palace-charcoal">
                           {step.title}
                         </h3>
-                        <p className="text-sm leading-relaxed text-muted-foreground">
+                        <p className="text-base leading-relaxed text-muted-foreground">
                           {step.description}
                         </p>
                       </div>

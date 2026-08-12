@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins, Nunito } from "next/font/google";
 import "./globals.css";
+import { MotionShell } from "@/components/shared/MotionShell";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -42,7 +43,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${poppins.variable} ${nunito.variable}`}>
-      <body className="min-h-screen antialiased">{children}</body>
+      <body className="min-h-screen antialiased">
+        <MotionShell>{children}</MotionShell>
+      </body>
     </html>
   );
 }

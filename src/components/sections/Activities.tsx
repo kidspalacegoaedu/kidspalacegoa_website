@@ -49,7 +49,7 @@ export function Activities() {
                       src={activity.image}
                       alt={activity.title}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="object-cover transition-transform duration-700 ease-out will-change-transform group-hover:scale-[1.04]"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-palace-charcoal/70 via-palace-charcoal/20 to-transparent" />
@@ -65,7 +65,7 @@ export function Activities() {
                     </div>
                   </div>
                   <div className="p-5">
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-base leading-relaxed text-muted-foreground">
                       {activity.description}
                     </p>
                   </div>

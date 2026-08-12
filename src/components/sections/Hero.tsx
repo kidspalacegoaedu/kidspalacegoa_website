@@ -2,12 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FloatingShapes } from "@/components/shared/FloatingShapes";
 
 export function Hero() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section
       id="home"
@@ -30,7 +32,7 @@ export function Hero() {
       <div className="container-custom relative z-10 px-4 pb-20 pt-32 sm:px-6 lg:px-8 lg:pt-40">
         <div className="max-w-3xl">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
@@ -42,7 +44,7 @@ export function Hero() {
 
           <motion.h1
             className="heading-display mb-6 text-balance text-white"
-            initial={{ opacity: 0, y: 40 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
@@ -51,7 +53,7 @@ export function Hero() {
               From Home
               <motion.span
                 className="absolute -bottom-2 left-0 h-1 w-full rounded-full bg-gradient-orange"
-                initial={{ scaleX: 0 }}
+                initial={reduceMotion ? false : { scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.8, delay: 1 }}
                 style={{ originX: 0 }}
@@ -61,7 +63,7 @@ export function Hero() {
 
           <motion.p
             className="mb-10 max-w-xl text-lg leading-relaxed text-white/85 sm:text-xl"
-            initial={{ opacity: 0, y: 30 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
@@ -72,7 +74,7 @@ export function Hero() {
 
           <motion.div
             className="flex flex-col gap-4 sm:flex-row"
-            initial={{ opacity: 0, y: 30 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
@@ -90,8 +92,8 @@ export function Hero() {
 
         <motion.div
           className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 lg:block"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, y: [0, 8, 0] }}
+          initial={reduceMotion ? false : { opacity: 0 }}
+          animate={reduceMotion ? { opacity: 1 } : { opacity: 1, y: [0, 8, 0] }}
           transition={{
             opacity: { delay: 1.5 },
             y: { duration: 2, repeat: Infinity, ease: "easeInOut" },

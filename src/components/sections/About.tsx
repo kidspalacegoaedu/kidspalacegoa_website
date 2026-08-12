@@ -6,6 +6,7 @@ import { ScrollReveal } from "@/components/shared/ScrollReveal";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Counter } from "@/components/shared/Counter";
 import { Card, CardContent } from "@/components/ui/card";
+import { AmbientShapes } from "@/components/shared/AmbientShapes";
 
 const highlights = [
   {
@@ -46,8 +47,9 @@ const highlights = [
 
 export function About() {
   return (
-    <section id="about" className="section-padding bg-white">
-      <div className="container-custom">
+    <section id="about" className="section-padding relative overflow-hidden bg-white">
+      <AmbientShapes variant="blue" />
+      <div className="container-custom relative z-10">
         <ScrollReveal>
           <SectionHeader
             badge="About Us"
@@ -64,7 +66,7 @@ export function About() {
                   src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&q=80"
                   alt="Children engaged in learning at Kids Palace"
                   fill
-                  className="object-cover transition-transform duration-700 hover:scale-105"
+                  className="object-cover transition-transform duration-700 ease-out will-change-transform hover:scale-[1.04]"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>

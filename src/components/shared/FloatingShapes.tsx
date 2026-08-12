@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 const shapes = [
   { color: "bg-gradient-orange", size: "h-16 w-16", top: "15%", left: "8%", rotate: -6, delay: 0 },
@@ -12,6 +12,10 @@ const shapes = [
 ];
 
 export function FloatingShapes() {
+  const reduceMotion = useReducedMotion();
+
+  if (reduceMotion) return null;
+
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
       {shapes.map((shape, i) => (

@@ -12,6 +12,7 @@ import {
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Card, CardContent } from "@/components/ui/card";
+import { AmbientShapes } from "@/components/shared/AmbientShapes";
 import { WHY_CHOOSE, COLOR_MAP, type AccentColor } from "@/lib/constants";
 
 const iconMap: Record<string, LucideIcon> = {
@@ -25,8 +26,9 @@ const iconMap: Record<string, LucideIcon> = {
 
 export function WhyChoose() {
   return (
-    <section className="section-padding bg-white">
-      <div className="container-custom">
+    <section className="section-padding relative overflow-hidden bg-white">
+      <AmbientShapes variant="orange" />
+      <div className="container-custom relative z-10">
         <ScrollReveal>
           <SectionHeader
             badge="Why Kids Palace"
@@ -52,7 +54,7 @@ export function WhyChoose() {
                     <h3 className="mb-3 font-heading text-xl font-semibold text-palace-charcoal">
                       {item.title}
                     </h3>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
+                    <p className="text-base leading-relaxed text-muted-foreground">
                       {item.description}
                     </p>
                     <div

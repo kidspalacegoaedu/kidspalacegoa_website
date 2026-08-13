@@ -1,11 +1,16 @@
 "use client";
 
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import Lenis from "lenis";
 import { motion, useReducedMotion } from "framer-motion";
 
 export function MotionShell({ children }: { children: ReactNode }) {
   const reduceMotion = useReducedMotion();
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   useEffect(() => {
     if (reduceMotion) return;
@@ -32,9 +37,14 @@ export function MotionShell({ children }: { children: ReactNode }) {
 
   return (
     <motion.div
-      initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+      // Keep server-rendered content visible if JavaScript is delayed or fails.
+      initial={false}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      transition={
+        !hasMounted || reduceMotion
+          ? { duration: 0 }
+          : { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+      }
     >
       {children}
     </motion.div>

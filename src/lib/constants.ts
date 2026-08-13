@@ -175,7 +175,7 @@ export const ACTIVITIES = [
     icon: "PartyPopper",
     color: "pink" as const,
     image:
-      "https://images.unsplash.com/photo-1485546246426-74dc88ddf4f9?w=600&q=80",
+      "https://images.unsplash.com/photo-1544776193-352d25ca82cd?w=600&q=80",
   },
 ] as const;
 
@@ -201,12 +201,12 @@ export const GALLERY_IMAGES = [
     tall: true,
   },
   {
-    src: "https://images.unsplash.com/photo-1485546246426-74dc88ddf4f9?w=800&q=80",
+    src: "https://images.unsplash.com/photo-1544776193-352d25ca82cd?w=800&q=80",
     alt: "Outdoor play area",
     tall: false,
   },
   {
-    src: "https://images.unsplash.com/photo-1560785496-30633975e0f8?w=800&q=80",
+    src: "https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=800&q=80",
     alt: "Learning through play",
     tall: true,
   },

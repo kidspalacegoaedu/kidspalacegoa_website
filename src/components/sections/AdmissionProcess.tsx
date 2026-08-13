@@ -72,13 +72,6 @@ export function AdmissionProcess() {
                         </p>
                       </div>
                     </div>
-
-                    <div className="flex items-center gap-4 pl-4 md:hidden">
-                      <div className={`h-3 w-3 shrink-0 rounded-full ${stepColors[i]}`} />
-                      <span className="font-heading text-sm font-semibold text-palace-orange">
-                        Step {step.step}
-                      </span>
-                    </div>
                   </div>
                 </ScrollReveal>
               );

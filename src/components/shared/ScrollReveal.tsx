@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView, useReducedMotion } from "framer-motion";
-import { useRef, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 interface ScrollRevealProps {
@@ -19,7 +19,12 @@ export function ScrollReveal({
 }: ScrollRevealProps) {
   const ref = useRef(null);
   const reduceMotion = useReducedMotion();
+  const [hasMounted, setHasMounted] = useState(false);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   const directionOffset = {
     up: { y: 18, x: 0 },
@@ -34,9 +39,10 @@ export function ScrollReveal({
   return (
     <motion.div
       ref={ref}
-      initial={reduceMotion ? false : { opacity: 0, scale: 0.985, ...offset }}
+      // Render content visibly until the client has hydrated.
+      initial={false}
       animate={
-        reduceMotion || isInView
+        !hasMounted || reduceMotion || isInView
           ? { opacity: 1, x: 0, y: 0, scale: 1 }
           : { opacity: 0, scale: 0.985, ...offset }
       }

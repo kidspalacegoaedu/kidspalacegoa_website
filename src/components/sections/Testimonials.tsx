@@ -54,10 +54,10 @@ export function Testimonials() {
                     key={testimonial.name}
                     className="min-w-0 flex-[0_0_100%] px-4"
                   >
-                    <Card className="h-[340px] border-0 bg-white shadow-soft-lg sm:h-[360px]">
-                      <CardContent className="flex h-full flex-col p-8 sm:p-12">
+                    <Card className="min-h-[340px] border-0 bg-white shadow-soft-lg sm:h-[360px]">
+                      <CardContent className="flex min-h-[340px] flex-col p-8 sm:h-full sm:p-12">
                         <Quote className="mb-6 h-10 w-10 text-palace-orange/30" />
-                        <div className="min-h-0 flex-1">
+                        <div className="min-h-0 sm:flex-1">
                           <p className="text-lg leading-relaxed text-palace-charcoal sm:text-xl">
                             &ldquo;{getReviewExcerpt(testimonial.content)}&rdquo;
                           </p>

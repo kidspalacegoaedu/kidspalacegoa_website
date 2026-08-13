@@ -32,7 +32,7 @@ export function Hero() {
       <div className="container-custom relative z-10 px-4 pb-20 pt-32 sm:px-6 lg:px-8 lg:pt-40">
         <div className="max-w-3xl">
           <motion.div
-            initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
@@ -44,7 +44,7 @@ export function Hero() {
 
           <motion.h1
             className="heading-display mb-6 text-balance text-white"
-            initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
@@ -53,7 +53,7 @@ export function Hero() {
               From Home
               <motion.span
                 className="absolute -bottom-2 left-0 h-1 w-full rounded-full bg-gradient-orange"
-                initial={reduceMotion ? false : { scaleX: 0 }}
+                initial={false}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 0.8, delay: 1 }}
                 style={{ originX: 0 }}
@@ -63,7 +63,7 @@ export function Hero() {
 
           <motion.p
             className="mb-10 max-w-xl text-lg leading-relaxed text-white/85 sm:text-xl"
-            initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
@@ -74,7 +74,7 @@ export function Hero() {
 
           <motion.div
             className="flex flex-col gap-4 sm:flex-row"
-            initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+            initial={false}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
@@ -92,7 +92,7 @@ export function Hero() {
 
         <motion.div
           className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 lg:block"
-          initial={reduceMotion ? false : { opacity: 0 }}
+          initial={false}
           animate={reduceMotion ? { opacity: 1 } : { opacity: 1, y: [0, 8, 0] }}
           transition={{
             opacity: { delay: 1.5 },

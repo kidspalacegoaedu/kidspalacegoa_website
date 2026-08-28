@@ -75,7 +75,7 @@ export function Contact() {
                         icon: MapPin,
                         title: "Visit Us",
                         content:
-                          "Kids Palace Preschool, Near Tivim Industrial Estate, Damadem, Karaswad Road, Mumbai Goa Highway, Acoi Village, Goa 403526",
+                          "Kid's Palace Preschool, After Tivim Industrial Estate, Near forest check post, Damadem Karaswada, North Goa, 403526",
                         mapsHref,
                       },
                       {

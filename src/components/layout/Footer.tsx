@@ -81,9 +81,9 @@ export function Footer() {
                   >
                     <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-palace-orange transition-transform duration-300 group-hover/address:-translate-y-0.5" />
                     <span>
-                      Kids Palace Preschool, Near Tivim Industrial Estate,
+                      Kids Palace Preschool, After Tivim Industrial Estate,
                       <br />
-                      Damadem, Karaswad Road, Mumbai Goa Highway, Acoi Village, Goa 403526
+                      Near forest check post, Damadem Karaswada, North Goa, 403526
                       <ExternalLink className="ml-1 inline h-3 w-3 opacity-0 transition-opacity duration-300 group-hover/address:opacity-100" />
                     </span>
                   </a>

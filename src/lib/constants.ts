@@ -257,12 +257,12 @@ export const FAQ_ITEMS = [
   {
     question: "What age groups do you accept?",
     answer:
-      "We welcome children from 1.5 years onwards, with programs tailored for toddlers, playgroup, nursery, Jr. KG, Sr. KG, and full-day daycare.",
+      "We welcome children from 2 years onwards, with programs tailored for toddlers, playgroup, nursery, Jr. KG, Sr. KG, and full-day daycare.",
   },
   {
     question: "What are your operating hours?",
     answer:
-      "Our preschool operates from 8:30 AM to 3:30 PM, Monday through Saturday. Daycare extends until 6:30 PM for working parents.",
+      "Our preschool operates from 9:00 AM to 12:30 PM, Monday through Saturday. Daycare extends until 6:00 PM for working parents.",
   },
   {
     question: "How do you ensure child safety?",
@@ -272,12 +272,12 @@ export const FAQ_ITEMS = [
   {
     question: "What is the teacher-to-child ratio?",
     answer:
-      "We maintain small class sizes with a ratio of 1:8 for younger groups and 1:10 for older children, ensuring personalized attention.",
+      "We maintain small class sizes with a ratio of 1:10 for all students, ensuring personalized attention.",
   },
   {
     question: "How do I begin the admission process?",
     answer:
-      "Simply schedule a school visit through our contact form or WhatsApp. We'll guide you through meeting the principal and completing enrollment.",
+      "Simply schedule a school visit during our office hours (10AM-12PM). We'll guide you through meeting the principal and completing enrollment.",
   },
 ] as const;
 

@@ -29,21 +29,29 @@ export function Contact() {
     const formData = new FormData(form);
 
     try {
-      const response = await fetch("/api/contact", {
+      formData.append(
+        "access_key",
+        process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || ""
+      );
+      formData.append("subject", "New Contact Form Submission - KidsPalace");
+      formData.append("from_name", "KidsPalace Website");
+      formData.append("replyto", String(formData.get("email") || ""));
+
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(Object.fromEntries(formData)),
+        headers: { Accept: "application/json" },
+        body: formData,
       });
       const data = await response.json();
 
-      if (!response.ok) throw new Error(data.error);
+      if (!response.ok || !data.success) {
+        throw new Error("Submission failed");
+      }
 
       form.reset();
       setSubmitted(true);
-    } catch (error) {
-      setSubmitError(
-        error instanceof Error ? error.message : "We couldn't send your message. Please try again."
-      );
+    } catch {
+      setSubmitError("We couldn't send your message. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -207,6 +215,7 @@ export function Contact() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-5">
+                    <input type="checkbox" name="botcheck" style={{ display: "none" }} />
                     <div className="grid gap-5 sm:grid-cols-2">
                       <div className="space-y-2">
                         <Label htmlFor="name">Full Name</Label>

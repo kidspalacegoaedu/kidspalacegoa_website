@@ -19,8 +19,8 @@ export const WHATSAPP_MESSAGE =
   "Hello Kids Palace! I would like to know more about admissions.";
 
 export const SOCIAL_LINKS = [
-  { label: "Facebook", href: "#" },
-  { label: "Instagram", href: "#" },
+  { label: "Facebook", href: "https://www.facebook.com/kidspalacegoa" },
+  { label: "Instagram", href: "https://www.instagram.com/kidspalacegoa/" },
   { label: "YouTube", href: "#" },
 ] as const;
 

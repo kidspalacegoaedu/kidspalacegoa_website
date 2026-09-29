@@ -7,8 +7,8 @@ import { NAV_LINKS, PHONE_NUMBERS } from "@/lib/constants";
 import { ScrollReveal } from "@/components/shared/ScrollReveal";
 
 const socialIcons = [
-  { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: Instagram, href: "#", label: "Instagram" },
+  { icon: Facebook, href: "https://www.facebook.com/kidspalacegoa", label: "Facebook" },
+  { icon: Instagram, href: "https://www.instagram.com/kidspalacegoa/", label: "Instagram" },
   { icon: Youtube, href: "#", label: "YouTube" },
 ];
 
@@ -40,6 +40,8 @@ export function Footer() {
                   <a
                     key={label}
                     href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={label}
                     className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 transition-[transform,background-color] duration-300 hover:-translate-y-1 hover:bg-palace-orange"
                   >
